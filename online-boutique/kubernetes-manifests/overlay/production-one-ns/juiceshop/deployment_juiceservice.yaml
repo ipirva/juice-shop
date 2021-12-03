@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juiceservice
+spec:
+  selector:
+    matchLabels:
+      app: juiceservice
+  template:
+    metadata:
+      labels:
+        app: juiceservice
+    spec:
+      containers:
+      - name: server
+        image: ipirva/juiceshop:latest
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: 200m
+            memory: 180Mi
+          limits:
+            cpu: 300m
+            memory: 300Mi
